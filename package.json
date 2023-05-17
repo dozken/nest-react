@@ -1,8 +1,16 @@
 {
   "name": "nest-react",
   "version": "1.0.0",
+  "scripts": {
+    "dev": "dotenv -- turbo run dev",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "deploy": "turbo run deploy"
+  },
   "devDependencies": {
     "turbo": "^1.9.6"
   },
-  "workspaces": ["apps/*"]
+  "workspaces": [
+    "apps/*"
+  ]
 }
