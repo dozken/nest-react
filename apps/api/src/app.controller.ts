@@ -1,5 +1,6 @@
-import { Controller, Get } from '@nestjs/common';
+import {Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
+import * as process from "process";
 
 @Controller()
 export class AppController {
@@ -7,6 +8,11 @@ export class AppController {
 
   @Get()
   getHello(): string {
-    return this.appService.getHello();
+    return this.appService.getHello() + process.env.DATABASE_URL;
+  }
+
+  @Post('conversation')
+  conversation(@Body() prompt: any): string {
+    return "Result from AI";
   }
 }
