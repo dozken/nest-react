@@ -8,12 +8,8 @@ import NewMessage from './components/NewMessage';
 function App() {
   const [messages, setMessages] = useState<string[]>([]);
 
-  const sendMessageHandler = (message: string) => {
-    sendMessage(message);
-  };
-
-  async function sendMessage(message: string) {
-    const response = await fetch('http://localhost:3000/api/conversation', {
+  const sendMessage = async (message: string) => {
+    const response = await fetch(`http://${import.meta.env.VITE_API_URL}/api/conversation`, {
       method: 'POST',
       body: JSON.stringify({ message: message }),
       headers: {
@@ -28,7 +24,7 @@ function App() {
 
   return (
     <div className="App">
-      <NewMessage onSendMessage={sendMessageHandler} />
+      <NewMessage onSendMessage={sendMessage} />
       <Messages messages={messages} />
     </div>
   );
